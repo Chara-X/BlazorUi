@@ -1,0 +1,15 @@
+﻿@inherits ViewsView
+
+<div @attributes="@AdditionAttributes"
+     style="@ToString()
+            display: grid; 
+            justify-content: start;
+            align-content: start;
+            justify-items: stretch;
+            align-items: stretch;
+            grid-auto-rows: 1fr;
+            grid-auto-columns: 1fr;
+            grid-template-rows: @RowDefinitions?.Select(x => x.ToString()).Aggregate((x, y) => x + ' ' + y); 
+            grid-template-columns: @ColumnDefinitions?.Select(x => x.ToString()).Aggregate((x, y) => x + ' ' + y);">
+    @ChildContent
+</div>

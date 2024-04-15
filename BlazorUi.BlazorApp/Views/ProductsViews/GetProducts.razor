@@ -1,0 +1,19 @@
+﻿@if (_products == null)
+{
+    <Spinner/>
+}
+else
+{
+    <Nav IsFill="true" IsPills="true">
+        @foreach (var x in Enum.GetValues<ProductCategory>())
+        {
+            <NavLink href="@($"{nameof(GetProducts)}?{nameof(Keyword)}={Keyword}&{nameof(Category)}={x}")" class="nav-link nav-item">@x</NavLink>
+        }
+    </Nav>
+    <Divider/>
+    <Search Value="@Keyword" Items="DbContext.Products.Select(x => x.Title)" OnSearch="x => {Keyword = x;Page = 0;OnGetProducts();return Task.CompletedTask;}" PlaceHolder="搜索..." IsLikeMatch="true" />
+    <br/>
+    <ShowProducts Products="@_products"/>
+    <br/>
+    <Pagination PageIndex="@(Page + 1)" MaxPageLinkCount="2" PageCount="_pageCount" OnPageLinkClick="x => {Page = x - 1;OnGetProducts();return Task.CompletedTask; }" Alignment="Alignment.Left" />
+}

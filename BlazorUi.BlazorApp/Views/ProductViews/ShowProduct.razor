@@ -1,0 +1,14 @@
+﻿@using BlazorUi.ViewProperties
+
+<Grid Height="200" ColumnDefinitions="new GridLength[] { new(200, LengthUnit.Pixel), new() }">
+    <GridCell Column="0">
+        <ImageViewer Url="@Product.ImageUri" FitMode="ObjectFitMode.Contain" ShowPlaceHolder="true"/>
+    </GridCell>
+    <GridCell Column="1">
+        <Card>
+            <HeaderTemplate><a href="@nameof(BuyProduct)?@(nameof(BuyProduct.ProductId))=@Product.Id"><h1>@Product.Title</h1></a></HeaderTemplate>
+            <BodyTemplate>@Product.Content</BodyTemplate>
+            <FooterTemplate>￥@Product.Price</FooterTemplate>
+        </Card>
+    </GridCell>
+</Grid>

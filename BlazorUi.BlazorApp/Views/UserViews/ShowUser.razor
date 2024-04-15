@@ -1,0 +1,9 @@
+﻿@using System.Security.Claims
+<AuthorizeView>
+    <NotAuthorized>NotAuthorized : (</NotAuthorized>
+    <Authorized Context="x">
+        <Display Value="@x.User.FindFirst(ClaimTypes.NameIdentifier)!.Value" ShowLabel="true" DisplayText="标识：" />
+        <Display Value="@x.User.FindFirst(ClaimTypes.Name)!.Value" ShowLabel="true" DisplayText="帐户：" />
+        <Display Value="@x.User.FindFirst(ClaimTypes.Hash)!.Value" ShowLabel="true" DisplayText="密码：" />
+    </Authorized>
+</AuthorizeView>

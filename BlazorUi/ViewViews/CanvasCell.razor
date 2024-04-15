@@ -1,0 +1,11 @@
+﻿@inherits ViewView
+
+<div @attributes="@AdditionAttributes"
+     style="@ToString() 
+            position: absolute; 
+            left: @(Left)px; 
+            top: @(Top)px; 
+            right: @(Right)px; 
+            bottom: @(Bottom)px;">
+    @ChildContent
+</div>

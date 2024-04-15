@@ -1,0 +1,38 @@
+﻿@inherits LayoutComponentBase
+@implements IDisposable
+
+<div class="page">
+    <div class="sidebar">
+        <NavMenu/>
+    </div>
+    <main>
+        <div class="top-row px-4">
+            <NavLink href="@nameof(BuyProductGroupings)">
+                <Button Icon="fas fa-baby-carriage">
+                    <Span Value="购物车"/>
+                    <AuthorizeView>
+                        <Badge Color="Color.Danger">@(ShoppingCartService.Count)</Badge>
+                    </AuthorizeView>
+                </Button>
+            </NavLink>
+            <AuthorizeView>
+                <NotAuthorized>
+                    <Nav>
+                        <a href="@nameof(GetUser)?@(nameof(GetUser.ReturnUrl))=@NavigationManager.ToBaseRelativePath(NavigationManager.Uri.Split('?')[0])">登录</a>
+                        <a href="@nameof(AddUser)">注册</a>
+                    </Nav>
+                </NotAuthorized>
+                <Authorized>
+                    <Nav>
+                        <a href="@nameof(ShowUser)">主页</a>
+                    </Nav>
+                    <Button Text="注销" OnClick="@(() => UserService.Clear())" Color="Color.Link"/>
+                </Authorized>
+            </AuthorizeView>
+            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
+        </div>
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+</div>

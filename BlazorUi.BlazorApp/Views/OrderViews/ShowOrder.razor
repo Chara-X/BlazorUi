@@ -1,0 +1,10 @@
+﻿@if (_order == null)
+{
+    <Empty/>
+}
+else
+{
+    <ShowProductGroupings ProductGroupings="DbContext.ProductGroupings.Where(x => x.OrderId == OrderId)" IsReadonly="true"/>
+    <a class="btn btn-outline-primary me-3">￥@_order.Price</a>
+    <span>共@(_order.Count)件</span>
+}

@@ -1,0 +1,14 @@
+﻿@using BlazorUi.ViewProperties
+@inherits ViewsView
+
+<div @attributes="@AdditionAttributes"
+     style="@ToString()
+            display: flex;
+            flex-direction: @Direction.AsString();
+            flex-wrap: wrap;
+            justify-content: start;
+            align-content: start;
+            justify-items: start;
+            align-items: stretch;">
+    @ChildContent
+</div>

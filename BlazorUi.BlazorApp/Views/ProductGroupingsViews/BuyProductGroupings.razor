@@ -1,0 +1,15 @@
+﻿@using Direction = BlazorUi.ViewProperties.Direction
+@using BlazorUi.ViewProperties
+@implements IDisposable
+
+<AuthorizeView>
+    <NotAuthorized>NotAuthorized : (</NotAuthorized>
+    <Authorized>
+        <ShowProductGroupings ProductGroupings="@ShoppingCartService.GetAll()"/>
+        <br/>
+        <StackPanel Direction="Direction.Left">
+            <Cell Padding="new Thickness(7)">总价：@Price</Cell>
+            <Button Text="购买" OnClick="@OnBuy" IsOutline="true"/>
+        </StackPanel>
+    </Authorized>
+</AuthorizeView>

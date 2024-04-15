@@ -1,0 +1,19 @@
+﻿@if (_product == null)
+{
+    <Empty/>
+}
+else
+{
+    <ShowProduct Product="@_product"/>
+
+    <Divider/>
+
+    <AuthorizeView>
+        <NotAuthorized>
+            <a href="@nameof(GetUser)?@nameof(GetUser.ReturnUrl)=@nameof(BuyProduct)/@_product.Id"><Button Icon="fas fa-baby-carriage" Text="添加到购物车" /></a>
+        </NotAuthorized>
+        <Authorized>
+            <Button Icon="fas fa-baby-carriage" Text="添加到购物车" OnClick="@OnBuy" />
+        </Authorized>
+    </AuthorizeView>
+}

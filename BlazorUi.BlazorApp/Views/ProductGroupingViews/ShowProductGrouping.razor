@@ -1,0 +1,12 @@
+﻿@using BlazorUi.ViewProperties
+<Grid ColumnDefinitions="new GridLength[] { new(), new(GridLengthType.Auto) }">
+    <GridCell Column="0">
+        <ShowProduct Product="@DbContext.Products.Single(x => x.Id == ProductGrouping.ProductId)"/>
+    </GridCell>
+    <GridCell Column="1" Padding="new Thickness(10,0,0,0)" VerticalContentAlignment="VerticalAlignment.Center">
+        <StackPanel>
+            <BootstrapInputNumber Value="ProductGrouping.Count" ValueChanged="(int x) => OnCountChanged(x)" readonly="@IsReadonly"/>
+            <Button Text="移除" Color="Color.Danger" OnClick="@OnRemove"  IsDisabled="IsReadonly"/>
+        </StackPanel>
+    </GridCell>
+</Grid>

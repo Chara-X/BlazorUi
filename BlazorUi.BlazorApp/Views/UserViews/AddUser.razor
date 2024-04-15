@@ -1,0 +1,6 @@
+﻿<ValidateForm @ref="_form" Model="_user" OnValidSubmit="_ => {OnAddUser();return Task.CompletedTask;}" ShowLabel="true">
+    <BootstrapInput @bind-Value="_user.Name" DisplayText="帐户："/><br/>
+    <BootstrapInput @bind-Value="_user.Password" DisplayText="密码：" type="password" /><br />
+    <Button ButtonType="ButtonType.Submit" Text="注册"/>
+</ValidateForm>
+

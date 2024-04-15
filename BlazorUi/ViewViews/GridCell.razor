@@ -1,0 +1,7 @@
+﻿@inherits ViewView
+
+<div @attributes="@AdditionAttributes"
+     style="@ToString() 
+            grid-area: @(Row + 1)/@(Column + 1)/span @RowSpan/span @ColumnSpan;">
+    @ChildContent
+</div>

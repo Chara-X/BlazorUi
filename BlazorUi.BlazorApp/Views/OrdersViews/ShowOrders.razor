@@ -1,0 +1,27 @@
+﻿<AuthorizeView>
+    <NotAuthorized>NotAuthorized : (</NotAuthorized>
+    <Authorized>
+        @if (_orders==null)
+        {
+            <Spinner/>
+        }
+        else
+        {
+            <ul class="list-group">
+                @foreach (var order in _orders)
+                {
+                    <li>
+                        <Scroll Height="200px">
+                            @foreach (var x in GetProducts(order))
+                            {
+                                <ShowProduct Product="@x"/>
+                            }
+                        </Scroll>
+                        <a href="@nameof(ShowOrder)?@(nameof(ShowOrder.OrderId))=@order.Id" class="btn btn-outline-primary me-3">￥@order.Price</a>
+                        <span>共@(order.Count)件</span>
+                    </li>
+                }
+            </ul>
+        }
+    </Authorized>
+</AuthorizeView>
